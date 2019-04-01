@@ -13,7 +13,6 @@ gulp.task('meetup:get', async function () {
             let data = response.data;
             if (stringMatch.length > 0) {
                 data = data.filter(meetup => {
-                    console.log(meetup.name);
                     return meetup.name.includes(stringMatch);
                 });
             }

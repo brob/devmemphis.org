@@ -18,7 +18,9 @@ body {
 * + * {
     margin-top: 1em;
 }
-
+img {
+    max-width: 100%;
+}
 a {
     color: var(--link-color);
 }
