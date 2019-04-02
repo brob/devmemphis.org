@@ -3,7 +3,7 @@
 <section class="meetups">
     <section class="upcoming">
         <h2>Upcoming Meetups</h2>
-        {% assign meetupSlice = meetups | lookup: "DevMemphis" | slice: "2" %}
+        {% assign meetupSlice = meetups | slice: "2" %}
         {% for meetup in meetupSlice %}
             <article class="meetup__item">
                 <h3 class="meetup__title"><a href="{{meetup.link }}" title="Link to {{ meetup.name }}">{{ meetup.name }}</a></h3>
@@ -13,15 +13,24 @@
             </article>
         {% endfor %}
     </section>
-
-    {% if collections.posts.0 %}
-    <section class="notes">
-        <h2>Past Meetup Notes</h2>
-        {% for post in collections.posts %}
-            <h3><a href="{{ post.url }}" title="Link to {{ post.data.title }}">{{ post.data.title }}</a></h3>
-        {% endfor %}
+    <section class="sidebar">
+        {% if collections.posts.0 %}
+        <section class="notes">
+            <h2>Past Meetup Notes</h2>
+            {% for post in collections.posts %}
+                <h3><a href="{{ post.url }}" title="Link to {{ post.data.title }}">{{ post.data.title }}</a></h3>
+            {% endfor %}
+        </section>
+        {% endif %}
+        {% if collections.sponsors.0 %}
+        <section class="sponsors">
+            <h2>Sponsors</h2>
+            {% for sponsor in collections.sponsors %}
+                <a href="{{ sponsor.data.link }}"><img src="{{ sponsor.data.image }}" alt="{{ sponsor.data.title }}"></a>
+            {% endfor %}
+        </section>
+        {% endif %} 
     </section>
-    {% endif %}
 </section>
 
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
